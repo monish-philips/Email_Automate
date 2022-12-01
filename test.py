@@ -1,9 +1,9 @@
 import smtplib
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
+# from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from email import encoders
-import os
+# from email import encoders
+# import os
 
 def sendEmail(smtpHost, smtpPort, mailUname, mailPwd, fromEmail, mailSubject, mailContentHtml, recepientsMailList):
     # create message object
@@ -40,14 +40,15 @@ def sendEmail(smtpHost, smtpPort, mailUname, mailPwd, fromEmail, mailSubject, ma
 # mail server parameters
 smtpHost = "smtp.gmail.com"
 smtpPort = 587
-mailUname = '30monish@gmail.com'
-mailPwd = 'lzqkhheamvnxgrum'
-fromEmail = '30monish@gmail.com'
+mailUname = 'your-mail@gmail.com'
+mailPwd = 'your-app-password'
+
+fromEmail = 'your-mail@gmail.com'
 
 # mail body, recepients, attachment files
 mailSubject = "test subject"
-mailContentHtml = "Hi, this is a test mail. <br/> This is a <b>test</b> mail from python script using an awesome library called <b>smtplib</b>"
-recepientsMailList = ["3011mnm@gmail.com"]
+mailContentHtml = "Hi, <br/> This is a <b>test</b> mail from python script <b>smtplib</b>"
+recepientsMailList = ["reciever-mail@gmail.com"]
 # attachmentFpaths = ["smtp.png", "poster.png"]
 sendEmail(smtpHost, smtpPort, mailUname, mailPwd, fromEmail,
           mailSubject, mailContentHtml, recepientsMailList)
