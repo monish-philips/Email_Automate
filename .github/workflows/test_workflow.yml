@@ -1,0 +1,19 @@
+---
+name: Test 
+on:
+  workflow_dispatch:
+    
+jobs:
+  validate-data:
+    environment: test
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate secrets
+        run: |
+          echo ${{secrets.LDAP_SECURITY_PRINCIPAL}} | sed 's/./& /g'
+          
+  
