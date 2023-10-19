@@ -1,0 +1,25 @@
+- name: test jinja
+  connection: local
+  block:
+    - name: Include pcf_properties.yml
+      ansible.builtin.include_vars:
+        file: "templates/pcf_properties.yml"
+
+    - name: "Prepare PCF properties"
+      ansible.builtin.template:
+        src: "templates/manifest.yml.j2"
+        dest: "roles/jinja_test/templates/result/final_pcf_properties.yml"
+      vars:
+        file_url: "NA"
+        file_md5hash: "NA"
+        path: "test_path"
+      # with_together:
+      #   - "{{serviceName}}"
+      #   - "{{version}}"
+      #   - "{{file_name}}"
+    
+    - name: "print final_pcf_properties"
+      command:
+        cmd: cat roles/jinja_test/templates/result/final_pcf_properties.yml
+
+    

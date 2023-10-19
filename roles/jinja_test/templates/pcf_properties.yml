@@ -1,0 +1,43 @@
+ldapservice:
+  server:
+    port: 9898
+  spring:
+    profiles:
+      active: sseevent,cloud
+    mvc:
+      pathmatch:
+        matching-strategy: ant_path_matcher
+  application:
+    ldap:
+      security-authentication: 'simple'
+      security-principal: '{{ldap_security_principal}}'
+      security-credentials: '{{ldap_security_credentials}}'
+      initial-context-factory: 'com.sun.jndi.ldap.LdapCtxFactory'
+      provider-url: 'ldap://NLVHTCWAY1DC001.code1.emi.philips.com:3268'
+    drs-url: https://{{APP_PREFIX}}-domainrestservice.{{DOMAIN}}
+    proxy:
+      enabled: false
+  sse:
+    global-token: ${IS_GLOBAL_IAM_REQUIRED:false}
+    server:
+      url: https://{{APP_PREFIX}}-sseservice.{{DOMAIN}}/sse/sseemitter/v2/ldapService
+      events: LdapUserMetadata
+      filter-params: ''
+      health-check-url: https://{{APP_PREFIX}}-sseservice.{{DOMAIN}}/actuator/health
+    client:
+      keep-alive: true
+      max-retries: 10
+      reconnect-time: 5
+      retry-interval-seconds: 3
+  security:
+    iam:
+      client:
+        application: ImCSASP
+        apiVersion: 3
+        policyEvaluateUrl: "https://{{ URL_IAM_CLIENT }}/authorize/policy/$evaluate"
+        authorization: "{{iam_authorization}}"
+        hsdpAMUri: "https://{{ URL_IAM_CLIENT }}"
+        iamUser: "{{iam_username}}"
+        iamPwd: "{{iam_password}}"
+        isProxyEnabled: false
+        tokenVersion: 2
