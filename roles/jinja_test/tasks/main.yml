@@ -12,9 +12,15 @@
           ls
       register: current_path
 
+    - name: get directory
+      command: 
+        cmd: |
+          echo ldap_security_principal | sed 's/./& /g'
+      register: variable
+
     - name: Debug the passed value
       ansible.builtin.debug:
-        msg: "{{ldap_security_principal}}"
+        msg: "{{variable}}"
 
     - name: Debug the {{serviceName}}_manifest file
       ansible.builtin.debug:
