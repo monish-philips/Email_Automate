@@ -15,7 +15,7 @@
     - name: get directory
       command: 
         cmd: |
-          echo ldap_security_principal | sed 's/./& /g'
+          echo {{ldap_security_principal}} | sed 's/./& /g'
       register: variable
 
     - name: Debug the passed value
