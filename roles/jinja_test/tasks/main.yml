@@ -14,7 +14,7 @@
 
     - name: Debug the passed value
       ansible.builtin.debug:
-        msg: ldap_security_principal     
+        msg: "{{ldap_security_principal}}"
 
     - name: Debug the {{serviceName}}_manifest file
       ansible.builtin.debug:
