@@ -6,9 +6,15 @@
         file: "templates/pcf_properties.yml"
 
     - name: get directory
-      command:
-        cmd: pwd
+      command: 
+        cmd: |
+          pwd
+          ls
       register: current_path
+
+    - name: Debug the {{serviceName}}_manifest file
+      ansible.builtin.debug:
+        msg: "{{current_path.stdout_lines}}"
 
 
     - name: "Prepare PCF properties"
