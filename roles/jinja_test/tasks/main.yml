@@ -33,5 +33,8 @@
     - name: "print final_pcf_properties"
       command:
         cmd: cat /home/runner/work/test_repo/final_pcf_properties.yml
-
+      register: final_manifest
     
+    - name: Debug the manifest file
+      ansible.builtin.debug:
+        msg: "{{final_manifest.stdout_lines}}"
