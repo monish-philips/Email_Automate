@@ -8,7 +8,7 @@
     - name: "Prepare PCF properties"
       ansible.builtin.template:
         src: "templates/manifest.yml.j2"
-        dest: "roles/jinja_test/templates/result/final_pcf_properties.yml"
+        dest: "templates/result/final_pcf_properties.yml"
       vars:
         file_url: "NA"
         file_md5hash: "NA"
@@ -20,6 +20,6 @@
     
     - name: "print final_pcf_properties"
       command:
-        cmd: cat roles/jinja_test/templates/result/final_pcf_properties.yml
+        cmd: cat templates/result/final_pcf_properties.yml
 
     
