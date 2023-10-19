@@ -5,10 +5,16 @@
       ansible.builtin.include_vars:
         file: "templates/pcf_properties.yml"
 
+    - name: get directory
+      command:
+        cmd: pwd
+      register: current_path
+
+
     - name: "Prepare PCF properties"
       ansible.builtin.template:
         src: "templates/manifest.yml.j2"
-        dest: "templates/result/final_pcf_properties.yml"
+        dest: "{{current_path.stdout_lines}}/final_pcf_properties.yml"
       vars:
         file_url: "NA"
         file_md5hash: "NA"
@@ -20,6 +26,6 @@
     
     - name: "print final_pcf_properties"
       command:
-        cmd: cat templates/result/final_pcf_properties.yml
+        cmd: cat {{current_path.stdout_lines}}/final_pcf_properties.yml
 
     
