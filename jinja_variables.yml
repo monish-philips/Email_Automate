@@ -1,0 +1,13 @@
+---
+key: value
+file_name: test_file_name
+version: test_version
+serviceName: test_serviceName
+pcf_serviceName: ldapservice
+ldap_security_credentials: test_creds
+APP_PREFIX: test_prefix
+DOMAIN: test_domain
+URL_IAM_CLIENT: test_URL_IAM_CLIENT
+iam_username: test_iam_username
+iam_password: test_iam_password
+iam_authorization: test_iam_authorization

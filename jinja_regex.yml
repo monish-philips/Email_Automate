@@ -1,0 +1,12 @@
+---
+
+- name: test jinja regex
+  hosts: localhost
+  connection: local
+  gather_facts: true
+      
+  vars_files:
+    - jinja_variables.yml
+     
+  roles:  
+    - role: jinja_test
