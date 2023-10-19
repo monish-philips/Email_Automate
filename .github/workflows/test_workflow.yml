@@ -21,4 +21,4 @@ jobs:
         run: |
           echo 'ansible_test'
           ansible-playbook jinja_regex.yml -i ts_host --flush-cache \
-            -e "{'ldap_security_principal':${{ secrets.LDAP_SECURITY_PRINCIPAL}}}" \
+            -e "{'ldap_security_principal':${{ 'secrets.LDAP_SECURITY_PRINCIPAL'}}}" \
